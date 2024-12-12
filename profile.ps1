@@ -10,7 +10,10 @@ function Prompt
     if ($env:http_proxy) {
 	Write-Host "🌐 " -NoNewLine -Foreground Red;
     }
-    Write-Host "$(Get-Location)" -NoNewLine;
+
+    # cwd
+    $loc = $(Get-location).Path.Replace($env:userprofile, '~')
+    Write-Host "$loc" -NoNewLine;
 
     # Git branch
     $git_branch = ""
